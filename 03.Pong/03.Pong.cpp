@@ -17,7 +17,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(600, 900), "Pong", sf::Style::Close);  // SFML-Fenster, dass nur geschlossen werde  kann
     
     sf::Font pixeboy{};
-    if (!pixeboy.loadFromFile("Pixeboy.ttf")) std::cout << "Fehler beim Laden der Schriftart!";  // Schriftart aus Datei ins Programm laden, falls es nicht klappt Fehlermeldung
+    if (!pixeboy.loadFromFile("resources/Pixeboy.ttf")) std::cout << "Fehler beim Laden der Schriftart!";  // Schriftart aus Datei ins Programm laden, falls es nicht klappt Fehlermeldung
 
     spiel(window, pixeboy);
 
@@ -28,13 +28,13 @@ void spiel(sf::RenderWindow& window, sf::Font& pixeboy)
 {
     // Sound fürs Abprallen vom Spieler
     sf::SoundBuffer spielerbuffer;                 
-    if (!spielerbuffer.loadFromFile("Poing.mp3")) { std::cout << "Fehler beim Laden des Sounds (Spieler)"; exit(0); }  
+    if (!spielerbuffer.loadFromFile("resources/Poing.mp3")) { std::cout << "Fehler beim Laden des Sounds (Spieler)"; exit(0); }  
     sf::Sound poing;
     poing.setBuffer(spielerbuffer);            
 
     // Sound fürs Abprallen von den Wänden
     sf::SoundBuffer wandBuffer;
-    if (!wandBuffer.loadFromFile("Wand.mp3")) { std::cout << "Fehler beim Laden des Sounds (Wand)"; exit(0); }
+    if (!wandBuffer.loadFromFile("resources/Wand.mp3")) { std::cout << "Fehler beim Laden des Sounds (Wand)"; exit(0); }
     sf::Sound wandPoing;
     wandPoing.setBuffer(wandBuffer);
     wandPoing.setPlayingOffset(sf::Time(sf::milliseconds(300)));
@@ -172,7 +172,7 @@ void spiel(sf::RenderWindow& window, sf::Font& pixeboy)
 void gameover(sf::RenderWindow& window, sf::Font& pixeboy)
 {
     sf::SoundBuffer verlorenBuffer;
-    if (!verlorenBuffer.loadFromFile("gameover.mp3")) { std::cout << "Fehler beim Laden des gameover-Sounds!"; }
+    if (!verlorenBuffer.loadFromFile("resources/gameover.mp3")) { std::cout << "Fehler beim Laden des gameover-Sounds!"; }
     sf::Sound verlorenSound;
     verlorenSound.setBuffer(verlorenBuffer);
     verlorenSound.play();
